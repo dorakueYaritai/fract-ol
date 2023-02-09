@@ -6,7 +6,7 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 10:55:50 by kakiba            #+#    #+#             */
-/*   Updated: 2023/02/09 15:41:34 by kakiba           ###   ########.fr       */
+/*   Updated: 2023/02/09 17:21:35 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,10 @@ void	handle_argument(t_fractol *fractol, int argc, char **argv)
 
 	if (argc < 2)
 		x_exit(fractol, INVALID_ARG);
-	// printf("11\n");
 	fanc_id = argv[1];
 	if (fanc_id == NULL)
 		x_exit(fractol, INVALID_ARG);
 	argv_len = ft_strlen(fanc_id);
-	// printf("[%ld] [%s] [%ld]\n", argv_len, fanc_id, ft_strlen(MANDELBROT));
 	if (argv_len == ft_strlen(MANDELBROT) && \
 		ft_strncmp(fanc_id, MANDELBROT, argv_len) == SAME)
 		check_arg_for_mandelbrot(fractol, argc, argv);

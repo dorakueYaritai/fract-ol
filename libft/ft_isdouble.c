@@ -6,7 +6,7 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 11:31:23 by kakiba            #+#    #+#             */
-/*   Updated: 2023/02/09 15:15:04 by kakiba           ###   ########.fr       */
+/*   Updated: 2023/02/09 17:23:36 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,54 +42,6 @@ int	ft_isdouble(char *str)
 		return (0);
 	return (1);
 }
-
-// int	ft_isdouble(char *str)
-// {
-// 	size_t	i;
-// 	size_t	len;
-
-// 	if (str == NULL)
-// 		return (0);
-// 	len = ft_strlen(str);
-// 	i = get_nums_of_sign(str);
-// 	if (len - i == 0 || i >= 2 || !isvalid_double_point(str, len))
-// 	{
-// 		// if (len - i == 0)
-// 		// ;	// printf("test1: only sign\n");
-// 		// else if (i >= 2)
-// 		// ;	// printf("test2: many sign\n");
-// 		// else if (!isvalid_double_point(str, len))
-// 		// ;
-// 		// 	// printf("test3: invalid point\n");
-// 		return (0);
-// 	}
-// 	if (str[i] == '0')
-// 	{
-// 		if (str[i + 1] != '.' && str[i + 1] != '\0')
-// 		{
-// 			// printf("test4: 0 start but not 0 or double\n");
-// 			return (0);
-// 		}
-// 	}
-// 	if (len != 1 && str[len - 1] == '0')
-// 	{
-// 		// printf("test8: ended zero\n");
-// 		return (0);
-// 	}
-// 	while (i < len)
-// 	{
-// 		if (!ft_isdigit(str[i]) && str[i] != '.')
-// 		{
-// 			// printf("test5: there is not digit or point\n");
-// 			return (0);
-// 		}
-// 		i++;
-// 	}
-
-// 	if (!check_digit(str))
-// 		return (0);
-// 	return (1);
-// }
 
 static	size_t	get_nums_of_sign(char *str)
 {
@@ -153,6 +105,54 @@ static bool	check_digit(char *str)
 	++i;
 	return (1);
 }
+
+// int	ft_isdouble(char *str)
+// {
+// 	size_t	i;
+// 	size_t	len;
+
+// 	if (str == NULL)
+// 		return (0);
+// 	len = ft_strlen(str);
+// 	i = get_nums_of_sign(str);
+// 	if (len - i == 0 || i >= 2 || !isvalid_double_point(str, len))
+// 	{
+// 		// if (len - i == 0)
+// 		// ;	// printf("test1: only sign\n");
+// 		// else if (i >= 2)
+// 		// ;	// printf("test2: many sign\n");
+// 		// else if (!isvalid_double_point(str, len))
+// 		// ;
+// 		// 	// printf("test3: invalid point\n");
+// 		return (0);
+// 	}
+// 	if (str[i] == '0')
+// 	{
+// 		if (str[i + 1] != '.' && str[i + 1] != '\0')
+// 		{
+// 			// printf("test4: 0 start but not 0 or double\n");
+// 			return (0);
+// 		}
+// 	}
+// 	if (len != 1 && str[len - 1] == '0')
+// 	{
+// 		// printf("test8: ended zero\n");
+// 		return (0);
+// 	}
+// 	while (i < len)
+// 	{
+// 		if (!ft_isdigit(str[i]) && str[i] != '.')
+// 		{
+// 			// printf("test5: there is not digit or point\n");
+// 			return (0);
+// 		}
+// 		i++;
+// 	}
+
+// 	if (!check_digit(str))
+// 		return (0);
+// 	return (1);
+// }
 
 // static bool	check_digit(char *str)
 // {
@@ -222,6 +222,6 @@ static bool	check_digit(char *str)
 // 	printf("..1: %d\n", ft_isdouble(".1"));
 // 	printf("...1: %d\n", ft_isdouble(".1"));
 // 	printf("0.931824782795: %d\n", ft_isdouble("0.931824782795"));
-// 	printf("1234567890123456.9843771289: %d\n", ft_isdouble("1234567890123456.9843771289"));
+// 	printf("1234567890123456.9843771289: %d\n", 
+// ft_isdouble("1234567890123456.9843771289"));
 // }
-

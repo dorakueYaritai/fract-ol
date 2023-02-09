@@ -6,7 +6,7 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:00:26 by kakiba            #+#    #+#             */
-/*   Updated: 2023/02/09 15:41:34 by kakiba           ###   ########.fr       */
+/*   Updated: 2023/02/09 17:21:43 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	clean_init(t_fractol *fractol);
 
 int	main(int argc, char **argv)
 {
-	// (void)argc;
-
 	t_fractol	fractol;
 
 	clean_init(&fractol);
