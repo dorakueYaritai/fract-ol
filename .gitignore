@@ -1,7 +1,11 @@
 *.a
 *.o
 *.d
-a.out
 .vscode
-vscode
-settings.json
+.DS_Store
+.gitignore
+.history
+.DS_Store
+philo
+tty
+.DS_Store
