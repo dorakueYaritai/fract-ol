@@ -2,3 +2,6 @@
 *.o
 *.d
 a.out
+.vscode
+vscode
+settings.json
