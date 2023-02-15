@@ -20,6 +20,10 @@ IFLAGS		:=	-I ./include\
 				-I $(LIBFTDIR)\
 				-I $(MINILIBXDIR)\
 
+B_IFLAGS		:=	-I ./b_include\
+				-I $(LIBFTDIR)\
+				-I $(MINILIBXDIR)\
+
 LFLAGS		:=	-lXext\
 				-lX11\
 				-lm\
@@ -53,7 +57,7 @@ B_DEPS		:=	$(B_SRCS:$(B_SRCDIR)%.c=$(B_OBJSDIR)%.d)
 all:$(NAME)
 
 $(NAME): $(LIBFT) $(OBJS) $(MINILIBX)
-	$(CC) $(OBJS)  $(LIBFT) $(MINILIBX) $(IFLAGS) $(LFLAGS) -o $(NAME)
+	$(CC) $(OBJS)  $(LIBFT) $(MINILIBX) $(LFLAGS) -o $(NAME)
 
 $(LIBFT):
 	@echo $(GREEN)"----- $(LIBFT) make start-----"$(RESET)
@@ -69,7 +73,7 @@ $(OBJSDIR)/%.o:$(SRCDIR)/%.c
 	$(CC) $< $(CFLAGS) $(IFLAGS) $(DFLAGS) -c -o $@
 
 $(B_OBJSDIR)/%.o:$(B_SRCDIR)/%.c
-	$(CC) $< $(CFLAGS) $(IFLAGS) $(DFLAGS) -c -o $@
+	$(CC) $< $(CFLAGS) $(B_IFLAGS) $(DFLAGS) -c -o $@
 
 clean:
 	rm -f $(OBJS) && rm -f $(OBJSDIR)/*.d
@@ -87,6 +91,13 @@ re:fclean
 
 run:
 	./fractol 1
+	./fractol 2 0.32 0.043
+	./fractol 2 0.27334 0.00742
+	./fractol 2 -0.15652 1.03225
+	./fractol 2 -0.39054 -0.58679
+	./fractol 2 -0.74543 0.11301
+	./fractol 42
+	./fractol 1 42 42
 
 debug:
 	$(CFLAGS) += -g -fsanitize=address -fsanitize=undefined
@@ -95,9 +106,9 @@ debug:
 bonus:$(B_NAME)
 
 $(B_NAME): $(LIBFT) $(B_OBJS) $(MINILIBX)
-	$(CC) $(B_OBJS)  $(LIBFT) $(MINILIBX) $(IFLAGS) $(LFLAGS) -o $(B_NAME)
+	$(CC) $(B_OBJS)  $(LIBFT) $(MINILIBX) $(LFLAGS) -o $(B_NAME)
 
--include $(DEPS)
+-include $(DEPS) $(B_DEPS)
 
 .PHONY: all clean fclean re run debug
 

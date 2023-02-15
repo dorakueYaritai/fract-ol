@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_argument.c                                  :+:      :+:    :+:   */
+/*   handle_argument_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 10:55:50 by kakiba            #+#    #+#             */
-/*   Updated: 2023/02/15 14:35:01 by kakiba           ###   ########.fr       */
+/*   Updated: 2023/02/15 15:01:21 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fractol.h>
+#include <fractol_bonus.h>
 
 static void	check_arg_for_mandelbrot(t_fractol *fractol, int argc, char **argv);
 static void	check_arg_for_julia(t_fractol *fractol, int argc, char **argv);

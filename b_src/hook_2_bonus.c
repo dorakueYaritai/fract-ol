@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook_2.c                                           :+:      :+:    :+:   */
+/*   hook_2_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 10:25:50 by kakiba            #+#    #+#             */
-/*   Updated: 2023/02/09 15:41:34 by kakiba           ###   ########.fr       */
+/*   Updated: 2023/02/15 15:31:44 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fractol.h>
+#include <fractol_bonus.h>
 
 void	key_hook_julia(int keycode, t_fractol *fractol)
 {
@@ -39,7 +39,8 @@ void	key_hook_julia(int keycode, t_fractol *fractol)
 
 void	key_hook_zoom(int keycode, t_fractol *fractol)
 {
-	if (keycode == XK_z && fractol->img_data.zoom - 0.001 > 0)
+	if (keycode == XK_z && fractol->img_data.zoom - 0.001 > 0 \
+		&& fractol->img_data.max_loop_times < MAX_ZOOM)
 	{
 		fractol->img_data.zoom *= 1.2;
 		fractol->img_data.max_loop_times += 4;
@@ -73,7 +74,8 @@ static void	zoom_out_and_in(int botton, int x, int y, t_fractol *fractol)
 {
 	fractol->cursor.x = x;
 	fractol->cursor.y = y;
-	if (botton == SCROLL_UP)
+	if (botton == SCROLL_UP && \
+		fractol->img_data.max_loop_times < MAX_ZOOM)
 	{
 		fractol->img_data.zoom *= 1.05;
 		fractol->img_data.max_loop_times += 1;

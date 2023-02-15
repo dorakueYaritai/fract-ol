@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook_1.c                                           :+:      :+:    :+:   */
+/*   hook_1_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 19:18:35 by kakiba            #+#    #+#             */
-/*   Updated: 2023/02/09 15:41:34 by kakiba           ###   ########.fr       */
+/*   Updated: 2023/02/15 15:01:18 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fractol.h>
+#include <fractol_bonus.h>
 
 static int	my_key_hook(int keycode, t_fractol *fractol);
 static int	destroy(t_fractol *fractol);
