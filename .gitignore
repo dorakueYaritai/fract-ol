@@ -2,10 +2,3 @@
 *.o
 *.d
 .vscode
-.DS_Store
-.gitignore
-.history
-.DS_Store
-philo
-tty
-.DS_Store
