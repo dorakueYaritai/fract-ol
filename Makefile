@@ -3,20 +3,20 @@ CC			:=	gcc
 CFLAGS		:=	-Wall -Werror -Wextra
 DFLAGS		:=	-MMD -MP
 MFLAGS		:=	-fsanitize=address -g
-IFLAGS		=	-I $(INCLUDE)
 
 SRCDIR		:=	./src
-# SRCDIR		:=	$(PWD)/src
-# INCLUDE		:=	$(PWD)/include
-INCLUDE		:=	./include\
-				-lXext\
-				-lX11\
-				-lm 
 
 OBJSDIR		:=	./objs
-# OBJSDIR		:=	$(PWD)/objs
 LIBFTDIR	:=	./libft
 MINILIBXDIR	:=	./minilibx-linux
+
+IFLAGS		:=	-I $(PWD)/include\
+				-I $(LIBFTDIR)\
+				-I $(MINILIBXDIR)\
+
+LFLAGS		:=	-lXext\
+				-lX11\
+				-lm\
 
 SRCS		:=	$(SRCDIR)/main.c\
 				$(SRCDIR)/init.c\
@@ -27,23 +27,27 @@ SRCS		:=	$(SRCDIR)/main.c\
 				$(SRCDIR)/draw_mandelbrot.c\
 				$(SRCDIR)/draw_julia.c\
 				$(SRCDIR)/handle_argument.c
-OBJS		=	$(SRCS:$(SRCDIR)%.c=$(OBJSDIR)%.o)
-DEPS		=	$(SRCS:$(SRCDIR)%.c=$(OBJSDIR)%.d)
+
+OBJS		:=	$(SRCS:$(SRCDIR)%.c=$(OBJSDIR)%.o)
+DEPS		:=	$(SRCS:$(SRCDIR)%.c=$(OBJSDIR)%.d)
 LIBFT		:=	$(LIBFTDIR)/libft.a
 MINILIBX	:=	$(MINILIBXDIR)/libmlx.a
 
-.PHONY: all clean fclean re run debug $(NAME) $(LIBFT) $(MINILIBX) $(OBJSDIR)
 
 all:$(NAME)
 
-$(NAME): $(LIBFT) $(OBJS) $(MINILIBX) $(INCLUDE)
-	$(CC) $(OBJS)  $(LIBFT) $(MINILIBX) $(IFLAGS)-o $(NAME)
+$(NAME): $(LIBFT) $(OBJS) $(MINILIBX)
+	$(CC) $(OBJS)  $(LIBFT) $(MINILIBX) $(IFLAGS) $(LFLAGS) -o $(NAME)
 
-$(LIBFT):$(LIBFT)
-	cd $(LIBFTDIR) && make bonus
+$(LIBFT):
+	@echo $(GREEN)"----- $(LIBFT) make start-----"$(RESET)
+	$(MAKE) bonus -C $(LIBFTDIR)/
+	@echo $(GREEN)"----- $(LIBFT) $(CC) done-----"$(RESET)
 
 $(MINILIBX):
-	cd $(MINILIBXDIR) && make
+	@echo $(GREEN)"----- $(MINILIBX) make start-----"$(RESET)
+	$(MAKE) -C $(MINILIBXDIR)/
+	@echo $(GREEN)"----- $(MINILIBX) $(CC) done-----"$(RESET)
 
 $(OBJSDIR)/%.o:$(SRCDIR)/%.c
 	$(CC) $< $(CFLAGS) $(IFLAGS) $(DFLAGS) -c -o $@
@@ -66,3 +70,12 @@ run:
 debug:
 	$(CFLAGS) += -g -fsanitize=address -fsanitize=undefined
 	make re
+
+-include $(DEPS)
+
+.PHONY: all clean fclean re run debug
+
+RED			=	"\033[31m"
+GREEN		=	"\033[32m"
+YELLOW		=	"\033[33m"
+RESET		=	"\033[0m"

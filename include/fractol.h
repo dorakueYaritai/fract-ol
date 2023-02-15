@@ -6,7 +6,7 @@
 /*   By: kakiba <kotto555555@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:11:10 by kakiba            #+#    #+#             */
-/*   Updated: 2023/02/09 17:22:08 by kakiba           ###   ########.fr       */
+/*   Updated: 2023/02/15 12:21:31 by kakiba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,16 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-# include "../minilibx-linux/mlx.h"
-# include "../minilibx-linux/mlx_int.h"
-# include "../libft/libft.h"
 # include <math.h>
+
+# include <mlx.h>
+# include <mlx_int.h>
+# include <libft.h>
+
+// # include "mlx.h"
+// # include "../minilibx-linux/mlx.h"
+// # include "../minilibx-linux/mlx_int.h"
+// # include "../libft/libft.h"
 
 typedef struct s_complex
 {
